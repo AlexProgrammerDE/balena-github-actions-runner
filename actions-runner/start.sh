@@ -13,6 +13,6 @@ cd /usr/src/actions-runner/
 
 ./bin/installdependencies.sh
 
-runuser -l runner -c "cd /usr/src/actions-runner/ && $RUNNER_CONFIG"
+$RUNNER_CONFIG
 
 runuser -l runner -c "cd /usr/src/actions-runner/ && ./run.sh"
