@@ -1,9 +1,9 @@
 version: '2'
 services:
-  runner:
+  actions-runner:
     network_mode: host
     restart: always
-    build: ./runner
+    build: ./actions-runner
     privileged: true
     labels:
       io.balena.features.dbus: 1
