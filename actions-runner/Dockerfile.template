@@ -4,15 +4,17 @@ ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
 
 RUN install_packages curl tar
 
-RUN cd /usr/src/ \
+RUN adduser --disabled-password --gecos "" actions-runner
+
+RUN cd /home/actions-runner/ \
     && mkdir actions-runner 
 
-RUN cd /usr/src/actions-runner/ \
+RUN cd /home/actions-runner/actions-runner/ \
     && curl -O -L https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz \
     && tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
 
-COPY start.sh /usr/src/
+COPY start.sh /home/actions-runner/
 
-RUN chmod +x /usr/src/start.sh
+RUN chmod +x /home/actions-runner/start.sh
 
-CMD [ "/bin/bash", "/usr/src/start.sh" ]
+CMD [ "/bin/bash", "/home/actions-runner/start.sh" ]
