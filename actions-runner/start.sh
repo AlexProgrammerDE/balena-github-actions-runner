@@ -11,6 +11,6 @@ cd /home/actions-runner/actions-runner/
 
 ./bin/installdependencies.sh
 
-runuser -l runner -c "cd /home/actions-runner/actions-runner/ && $RUNNER_CONFIG"
+runuser -l actions-runner -c "cd /home/actions-runner/actions-runner/ && $RUNNER_CONFIG"
 
-runuser -l runner -c "cd /home/actions-runner/actions-runner/ && ./run.sh"
+runuser -l actions-runner -c "cd /home/actions-runner/actions-runner/ && ./run.sh"
