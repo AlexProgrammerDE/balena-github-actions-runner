@@ -9,8 +9,6 @@ if [[ -z "$RUNNER_CONFIG" ]]; then
   done
 fi
 
-cd /usr/src/actions-runner/
+runuser -l runner -c "cd /usr/src/actions-runner/ && $RUNNER_CONFIG"
 
-runuser -l runner -c "$RUNNER_CONFIG"
-
-runuser -l runner -c "./run.sh"
+runuser -l runner -c "cd /usr/src/actions-runner/ && ./run.sh"
