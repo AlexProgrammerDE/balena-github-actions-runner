@@ -9,9 +9,9 @@ if [[ -z "$RUNNER_CONFIG" ]]; then
   done
 fi
 
-runuser -l runner -c "cd /usr/src/actions-runner/ && $RUNNER_CONFIG"
+cd /usr/src/actions-runner/
 
-runuser -l runner -c "cd /usr/src/actions-runner/ && ./bin/installdependencies.sh"
+./bin/installdependencies.sh
 
 runuser -l runner -c "cd /usr/src/actions-runner/ && $RUNNER_CONFIG"
 
