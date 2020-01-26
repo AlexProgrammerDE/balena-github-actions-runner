@@ -1,0 +1,18 @@
+FROM balenalib/%%BALENA_MACHINE_NAME%%-debian:latest
+
+ENV DBUS_SYSTEM_BUS_ADDRESS=unix:path=/host/run/dbus/system_bus_socket
+
+RUN install_packages curl tar
+
+RUN cd /usr/src/ \
+    && mkdir actions-runner 
+
+RUN cd /usr/src/ \
+    && curl -O -L https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz \
+    && tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
+
+COPY start.sh /usr/src/
+
+RUN chmod +x /usr/src/start.sh
+
+CMD [ "/bin/bash", "/start.sh" ]
