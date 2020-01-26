@@ -7,7 +7,7 @@ RUN install_packages curl tar
 RUN cd /usr/src/ \
     && mkdir actions-runner 
 
-RUN cd /usr/src/ \
+RUN cd /usr/src/actions-runner/ \
     && curl -O -L https://github.com/actions/runner/releases/download/v2.164.0/actions-runner-linux-x64-2.164.0.tar.gz \
     && tar xzf ./actions-runner-linux-x64-2.164.0.tar.gz
 
