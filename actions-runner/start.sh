@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-adduser --disabled-password --gecos "" runner
-
 if [[ -z "$RUNNER_CONFIG" ]]; then
   while : ; do
     printf "%s\n" "You didn´t set the config. Please read the readme for setting it."
@@ -9,10 +7,10 @@ if [[ -z "$RUNNER_CONFIG" ]]; then
   done
 fi
 
-cd /usr/src/actions-runner/
+cd /home/actions-runner/actions-runner/
 
 ./bin/installdependencies.sh
 
-$RUNNER_CONFIG
+runuser -l runner -c "cd /home/actions-runner/actions-runner/ && $RUNNER_CONFIG"
 
-runuser -l runner -c "cd /usr/src/actions-runner/ && ./run.sh"
+runuser -l runner -c "cd /home/actions-runner/actions-runner/ && ./run.sh"
